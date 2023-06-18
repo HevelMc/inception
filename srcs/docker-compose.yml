@@ -1,0 +1,40 @@
+services:
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress:/var/www/wordpress
+    networks:
+      - my_network
+    restart: always
+  
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    volumes:
+      - wordpress:/var/www/wordpress
+    networks:
+      - my_network
+    env_file:
+      - ./.env
+    restart: always
+  
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    env_file:
+      - ./.env
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - my_network
+    restart: always
+
+volumes:
+  wordpress:
+  db:
+
+networks:
+  my_network:
