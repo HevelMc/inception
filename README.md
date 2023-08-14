@@ -20,13 +20,12 @@ To install and run this project, follow these steps:
 
 ## Configuration
 
-The following environment variables can be set in the `.env` file to configure the application:
-
-- `MYSQL_ROOT_PASSWORD` and `MYSQL_PASSWORD` - The passwords for the root and wordpress users in the database, respectively.
+Run `make setup` to setup the .env file.
+Alternatively, you can manually create the .env file by copying the .env.example file and updating the values.
 
 ## Usage
 
-To stop the containers, run the following command: `make down`
+To stop the containers, run the following command: `make stop`
 
 To remove the containers and images, run the following command: `make fclean`
 
